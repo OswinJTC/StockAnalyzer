@@ -10,4 +10,3 @@ public interface TradeRepository extends JpaRepository<Trade, Long> {
     Optional<Trade> findByReferenceNumber(int referenceNumber);
 
 }
-
