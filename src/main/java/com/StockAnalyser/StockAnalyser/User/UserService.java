@@ -23,21 +23,21 @@ public class UserService {
 
     public List<User> allUsers(){
         return userRepository.findAll();
-    }//Get all the users details
+    }
 
     public User SingleUserByName(String name){
         Optional<User> userOptional = userRepository.findByUsername(name);
-        return userOptional.orElse(null); // Or handle the absence of the user differently
-    }//Get a single user detail by name
+        return userOptional.orElse(null);
+    }
 
     public User SingleUserByEmail(String email){
         Optional<User> userOptional = userRepository.findByEmail(email);
-        return userOptional.orElse(null); // Or handle the absence of the user differently
-    }//Get a single user detail by email
+        return userOptional.orElse(null);
+    }
 
     public boolean checkPassword(User user, String enteredPassword){
         return user.getPassword().equals(enteredPassword);
-    }//Check if the login is valid
+    }
 
 
 }

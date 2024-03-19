@@ -57,5 +57,32 @@ public class DfcController {
         return ResponseEntity.ok(stockData);
     }
 
+    @PostMapping("/e_value/{stockName}")
+    public ResponseEntity<?> getE_Value(@PathVariable String stockName, @RequestBody Map<String, Double> payload) {
+        Map<String, Double> stockData = dfcService.scrapeStockData(stockName);
+        dfcService.calculateWACC(stockData); // Ensure WACC is calculated before V_value
+        double rapidGrowRate = payload.get("rapidGrowRate");
+        double permanentGrowRate = payload.get("permanentGrowRate");
+        double customizedYear = payload.get("customizedYear");
+        dfcService.calculate_V_value(stockData, rapidGrowRate, permanentGrowRate, customizedYear);
+        dfcService.calculate_EV(stockData, rapidGrowRate, customizedYear);
+        dfcService.calculate_E_value(stockData);
+        return ResponseEntity.ok(stockData);
+    }
+
+    @PostMapping("/idealStockPrice/{stockName}")
+    public ResponseEntity<?> get_IdealStockPrice(@PathVariable String stockName, @RequestBody Map<String, Double> payload) {
+        Map<String, Double> stockData = dfcService.scrapeStockData(stockName);
+        dfcService.calculateWACC(stockData); // Ensure WACC is calculated before V_value
+        double rapidGrowRate = payload.get("rapidGrowRate");
+        double permanentGrowRate = payload.get("permanentGrowRate");
+        double customizedYear = payload.get("customizedYear");
+        dfcService.calculate_V_value(stockData, rapidGrowRate, permanentGrowRate, customizedYear);
+        dfcService.calculate_EV(stockData, rapidGrowRate, customizedYear);
+        dfcService.calculate_E_value(stockData);
+        dfcService.calculate_idealStockPrice(stockData);
+        return ResponseEntity.ok(stockData);
+    }
+
 
 }
