@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/userApi")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://main.d2vaujsrihdmnl.amplifyapp.com/")
 public class UserController {
 
     @Autowired

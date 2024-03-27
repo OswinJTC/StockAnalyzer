@@ -8,7 +8,7 @@ import java.util.Map;
 
 @RequestMapping("/dfcApi")
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://main.d2vaujsrihdmnl.amplifyapp.com/")
 public class DfcController {
 
     @Autowired

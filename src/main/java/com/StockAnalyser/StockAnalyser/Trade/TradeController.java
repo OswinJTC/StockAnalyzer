@@ -9,7 +9,7 @@ import java.util.Map;
 
 @RequestMapping("/tradeApi")
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://main.d2vaujsrihdmnl.amplifyapp.com/")
 public class TradeController {
 
     @Autowired
